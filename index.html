@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohith V Krishnam | AI/ML Engineer</title>
+    <meta name="description" content="Portfolio of Mohith V Krishnam, an aspiring AI/ML Engineer and Generative AI enthusiast.">
+    <meta name="keywords" content="AI, Machine Learning, Generative AI, Portfolio, Python, PyTorch, TensorFlow">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#0a0a0a',
+                        'primary': '#4facfe',
+                        'secondary': '#00f2fe',
+                        'dark-text': '#e5e7eb',
+                        'cyan-600': '#0891b2',
+                        'cyan-700': '#0e7490',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --glow-color-primary: rgba(79, 172, 254, 0.7);
+            --glow-color-secondary: rgba(0, 242, 254, 0.7);
+            --glow-color-gold-faint: rgba(255, 215, 0, 0.2);
+            --border-color-gold: rgba(255, 215, 0, 0.4);
+        }
+
+        body { font-family: 'Poppins', sans-serif; }
+        
+        .gradient-text {
+            background-image: linear-gradient(to right, #00f2fe, #4facfe);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        
+        .dynamic-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Dark Mode Card Style (Unchanged) */
+        .dark .dynamic-card {
+             background-color: rgba(10, 10, 10, 0.8) !important; 
+             border-color: var(--border-color-gold) !important;
+             box-shadow: 0 0 8px var(--glow-color-gold-faint);
+        }
+        .dark .dynamic-card:hover {
+            border-color: var(--glow-color-secondary) !important;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 30px var(--glow-color-secondary);
+            transform: translateY(-8px) scale(1.02);
+        }
+        
+        .neon-glow-border {
+             border: 2px solid transparent;
+        }
+        .dark .neon-glow-border {
+            border: 2px solid var(--glow-color-secondary);
+            box-shadow: 0 0 20px var(--glow-color-secondary), 0 0 10px var(--glow-color-primary);
+        }
+
+        .text-glow-cyan { color: #0e7490; } /* text-cyan-700 */
+        .dark .text-glow-cyan {
+            color: #00f2fe;
+            text-shadow: 0 0 10px var(--glow-color-secondary);
+        }
+        
+        .link-glow-hover:hover {
+             filter: brightness(0.9);
+        }
+        .dark .link-glow-hover:hover {
+            filter: drop-shadow(0 0 8px var(--glow-color-secondary));
+        }
+
+        .progress-bar div { 
+            background-image: linear-gradient(to right, #00f2fe, #4facfe);
+            transition: width 1.5s ease-in-out; 
+            width: 0%;
+        }
+
+        /* Swiper Styles (Unchanged) */
+        .project-slider { width: 100%; padding-top: 20px; padding-bottom: 50px; }
+        .swiper-slide { width: 100%; height: auto; display: flex; justify-content: center; align-items: center; padding: 1rem 0; }
+        .swiper-button-next, .swiper-button-prev { color: #0891b2; }
+        .dark .swiper-button-next, .dark .swiper-button-prev { color: var(--glow-color-secondary); filter: drop-shadow(0 0 5px var(--glow-color-secondary)); }
+        .swiper-button-next:hover, .swiper-button-prev:hover { transform: scale(1.2); }
+        .dark .swiper-button-next:hover, .dark .swiper-button-prev:hover { color: #fff; }
+        .swiper-pagination-bullet { background: rgba(0, 0, 0, 0.2); }
+        .dark .swiper-pagination-bullet { background: rgba(255, 255, 255, 0.5); }
+        .swiper-pagination-bullet-active { background: #0891b2; }
+        .dark .swiper-pagination-bullet-active { background: #00f2fe; box-shadow: 0 0 10px #00f2fe; }
+        @media (min-width: 1024px) {
+            .swiper-button-next { right: 2rem; }
+            .swiper-button-prev { left: 2rem; }
+        }
+
+        /* Timeline CSS (Unchanged) */
+        .timeline { position: relative; max-width: 1200px; margin: 0 auto; }
+        .timeline::after {
+            content: ''; position: absolute; width: 3px;
+            background: linear-gradient(#00f2fe, #4facfe);
+            top: 0; bottom: 0; left: 50%; margin-left: -1.5px;
+        }
+        .timeline-container { padding: 10px 40px; position: relative; background-color: inherit; width: 50%; }
+        .timeline-container.left { left: 0; }
+        .timeline-container.right { left: 50%; }
+        .timeline-container::after {
+            content: ''; position: absolute; width: 20px; height: 20px; right: -10px;
+            background-color: #00f2fe; border: 4px solid #4facfe;
+            top: 28px; border-radius: 50%; z-index: 1; box-shadow: 0 0 10px #00f2fe;
+        }
+        .right::after { left: -10px; }
+        @media screen and (max-width: 768px) {
+            .timeline::after { left: 31px; }
+            .timeline-container { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-container.right { left: 0%; }
+            .left::after, .right::after { left: 21px; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-dark-bg dark:text-dark-text">
+
+    <div id="tsparticles" class="fixed top-0 left-0 w-full h-full z-[-1] hidden dark:block"></div>
+    <div class="fixed top-0 left-0 w-full h-full -z-10 hidden dark:block">
+        <video autoplay loop muted class="w-full h-full object-cover">
+            <source src="Gif.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="fixed top-0 left-0 w-full h-full bg-black/70 -z-[9] hidden dark:block"></div>
+
+    <header class="bg-gray-50/70 dark:bg-dark-bg/70 backdrop-blur-sm fixed top-0 left-0 right-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold gradient-text">Mohith V K</a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#about" class="text-gray-600 hover:text-cyan-700 dark:text-dark-text dark:hover:text-secondary transition-colors">About</a>
+                <a href="#skills" class="text-gray-600 hover:text-cyan-700 dark:text-dark-text dark:hover:text-secondary transition-colors">Skills</a>
+                <a href="#experience" class="text-gray-600 hover:text-cyan-700 dark:text-dark-text dark:hover:text-secondary transition-colors">Experience</a>
+                <a href="#projects" class="text-gray-600 hover:text-cyan-700 dark:text-dark-text dark:hover:text-secondary transition-colors">Projects</a>
+                <a href="#contact" class="text-gray-600 hover:text-cyan-700 dark:text-dark-text dark:hover:text-secondary transition-colors">Contact</a>
+            </div>
+            <button id="darkModeToggle" class="p-2 rounded-full text-gray-600 hover:bg-gray-200 dark:text-dark-text dark:hover:bg-gray-700 transition-colors">
+                 <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6">
+        <section id="home" class="h-screen flex flex-col justify-center items-center text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4">Mohith V Krishnam</h1>
+            <p class="text-2xl md:text-3xl mb-4 gradient-text font-semibold">AI/ML Engineer | Generative AI Enthusiast</p>
+            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8 h-8"><span id="typewriter"></span></p>
+            <div class="flex space-x-6">
+                <a href="https://github.com/MohithVKrishnam" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-cyan-700 hover:scale-110 transition-all duration-300"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/></svg></a>
+                <a href="https://www.linkedin.com/in/mohithvkrishnam/" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-cyan-700 hover:scale-110 transition-all duration-300"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+                <a href="mailto:mohithvkrishnam@gmail.com" class="text-gray-600 dark:text-gray-400 hover:text-cyan-700 hover:scale-110 transition-all duration-300"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+            </div>
+        </section>
+        
+        <section id="about" class="py-20 scroll-mt-20">
+            <h2 class="text-4xl font-bold text-center mb-12">About Me</h2>
+            <div class="dynamic-card bg-white border border-gray-200 shadow-md hover:shadow-lg hover:ring-2 hover:ring-cyan-400/40 p-8 rounded-2xl grid md:grid-cols-3 gap-10 items-center hover:scale-[1.01] hover:-translate-y-1 transition-all duration-300">
+                <div class="md:col-span-1 flex justify-center reveal">
+                    <div class="relative w-64 h-64 rounded-full neon-glow-border p-2 group">
+                        <img src="MohithVK.jpg" alt="Mohith V Krishnam" class="rounded-full w-full h-full object-cover object-top">
+                    </div>
+                </div>
+                <div class="md:col-span-2 reveal">
+                    <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                        A highly motivated and hardworking aspiring AI/ML Engineer with a strong foundation in computer science and a passion for developing intelligent systems. Eager to leverage skills in Python, PyTorch, and generative AI to contribute to innovative projects. A quick learner dedicated to building impactful backend solutions and AI-powered tools that solve real-world problems.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-20 scroll-mt-20">
+            <h2 class="text-4xl font-bold text-center mb-16">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-container left reveal">
+                    <div class="dynamic-card bg-white border border-gray-200 shadow-md hover:shadow-lg hover:ring-2 hover:ring-cyan-400/40 p-8 rounded-2xl hover:scale-[1.02] hover:-translate-y-2 transition-all duration-300">
+                        <h3 class="text-xl font-bold text-cyan-700 dark:text-secondary">Microsoft AI Azure Internship</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">May – June 2025</p>
+                        <ul class="list-disc list-inside text-gray-600 dark:text-gray-300">
+                            <li>Developed and deployed ML models using Azure Machine Learning.</li>
+                            <li>Worked on GenAI prompts for enterprise-level chatbots.</li>
+                            <li>Gained hands-on experience with cloud-based AI services.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-container right reveal">
+                    <div class="dynamic-card bg-white border border-gray-200 shadow-md hover:shadow-lg hover:ring-2 hover:ring-cyan-400/40 p-8 rounded-2xl hover:scale-[1.02] hover:-translate-y-2 transition-all duration-300">
+                        <h3 class="text-xl font-bold text-cyan-700 dark:text-secondary">AICTE–Shell India Internship</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">April – May 2025</p>
+                        <ul class="list-disc list-inside text-gray-600 dark:text-gray-300">
+                            <li>Contributed to a data analytics project using Python and Pandas.</li>
+                            <li>Assisted in building predictive maintenance models for industrial assets.</li>
+                            <li>Collaborated with a cross-functional team on data preprocessing.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ongoing-project" class="py-20 scroll-mt-20">
+            <h2 class="text-4xl font-bold text-center mb-12">Ongoing Project</h2>
+            <div class="dynamic-card bg-white border border-gray-200 shadow-md hover:shadow-lg hover:ring-2 hover:ring-cyan-400/40 rounded-2xl w-11/12 max-w-4xl p-10 mx-auto flex flex-col justify-center text-center reveal hover:scale-[1.01] hover:-translate-y-1 transition-all duration-300">
+                <h3 class="text-3xl font-bold mb-4 text-glow-cyan">Perfume Sync</h3>
+                <p class="text-lg font-semibold text-gray-900 dark:text-gray-300 mb-6">Context-Aware Engine for Next-Gen Gaming Experiences</p>
+                <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Developing a novel engine that synchronizes in-game events with olfactory feedback devices, creating deeply immersive and context-aware sensory experiences. This research explores the intersection of real-time game state analysis, machine learning for scent mapping, and hardware integration to pioneer a new dimension in interactive entertainment.
+                </p>
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 scroll-mt-20">
+            <h2 class="text-4xl font-bold text-center mb-12">My Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="dynamic-card bg-white border border-gray-200 shadow-md hover:shadow-lg hover:ring-2 hover:ring-cyan-400/40 p-6 rounded-2xl reveal hover:scale-[1.02] hover:-translate-y-2 transition-all duration-300">
+                    <h3 class="text-2xl font-semibold mb-4 text-cyan-700 dark:text-secondary">Languages</h3>
+                    <div class="space-y-4">
+                        <div class="skill-item"><div class="flex justify-between mb-1"><span>Python</span><span class="skill-percentage font-semibold text-cyan-700 dark:text-secondary">0%</span></div><div class="progress-bar bg-gray-200 dark:bg-gray-700 rounded-full h-3"><div data-width="70" class="h-3 rounded-full"></div></div></div>
+                        <div class="skill-item"><div class="flex justify-between mb-1"><span>C</span><span class="skill-percentage font-semibold text-cyan-700 dark:text-secondary">0%</span></div><div class="progress-bar bg-gray-200 dark:bg-gray-700 rounded-full h-3"><div data-width="80" class="h-3 rounded-full"></div></div></div>
+                        <div class="skill-item"><div class="flex justify-between mb-1"><span>HTML/CSS</span><span class="skill-percentage font-semibold text-cyan-700 dark:text-secondary">0%</span></div><div class="progress-bar bg-gray-200 dark:bg-gray-700 rounded-full h-3"><div data-width="60" class="h-3 rounded-full"></div></div></div>
+                        <div class="skill-item"><div class="flex justify-between mb-1"><span>Java</span><span class="skill-percentage font-semibold text-cyan-700 dark:text-secondary">0%</span></div><div class="progress-bar bg-gray-200 dark:bg-gray-700 rounded-full h-3"><div data-width="40" class="h-3 rounded-full"></div></div></div>
+                        <div class="skill-item"><div class="flex justify-between mb-1"><span>SQL</span><span class="skill-percentage font-semibold text-cyan-700 dark:text-secondary">0%</span></div><div class="progress-bar bg-gray-200 dark:bg-gray-700 rounded-full h-3"><div data-width="50" class="h-3 rounded-full"></div></div></div>
+                    </div>
+                </div>
+                <div class="dynamic-card bg-white border border-gray-200 shadow-md hover:shadow-lg hover:ring-2 hover:ring-cyan-400/40 p-6 rounded-2xl reveal hover:scale-[1.02] hover:-translate-y-2 transition-all duration-300">
+                    <h3 class="text-2xl font-semibold mb-4 text-cyan-700 dark:text-secondary">Frameworks & Libraries</h3>
+                     <div class="space-y-4">
+                        <div class="skill-item"><div class="flex justify-between mb-1"><span>PyTorch</span><span class="skill-percentage font-semibold text-cyan-700 dark:text-secondary">0%</span></div><div class="progress-bar bg-gray-200 dark:bg-gray-700 rounded-full h-3"><div data-width="45" class="h-3 rounded-full"></div></div></div>
+                        <div class="skill-item"><div class="flex justify-between mb-1"><span>TensorFlow</span><span class="skill-percentage font-semibold text-cyan-700 dark:text-secondary">0%</span></div><div class="progress-bar bg-gray-200 dark:bg-gray-700 rounded-full h-3"><div data-width="60" class="h-3 rounded-full"></div></div></div>
+                        <div class="skill-item"><div class="flex justify-between mb-1"><span>Transformers</span><span class="skill-percentage font-semibold text-cyan-700 dark:text-secondary">0%</span></div><div class="progress-bar bg-gray-200 dark:bg-gray-700 rounded-full h-3"><div data-width="45" class="h-3 rounded-full"></div></div></div>
+                        <div class="skill-item"><div class="flex justify-between mb-1"><span>Scikit-learn</span><span class="skill-percentage font-semibold text-cyan-700 dark:text-secondary">0%</span></div><div class="progress-bar bg-gray-200 dark:bg-gray-700 rounded-full h-3"><div data-width="60" class="h-3 rounded-full"></div></div></div>
+                    </div>
+                </div>
+                <div class="dynamic-card bg-white border border-gray-200 shadow-md hover:shadow-lg hover:ring-2 hover:ring-cyan-400/40 p-6 rounded-2xl reveal hover:scale-[1.02] hover:-translate-y-2 transition-all duration-300">
+                    <h3 class="text-2xl font-semibold mb-4 text-cyan-700 dark:text-secondary">Tools & Platforms</h3>
+                    <div class="space-y-4">
+                        <div class="skill-item"><div class="flex justify-between mb-1"><span>GitHub</span><span class="skill-percentage font-semibold text-cyan-700 dark:text-secondary">0%</span></div><div class="progress-bar bg-gray-200 dark:bg-gray-700 rounded-full h-3"><div data-width="85" class="h-3 rounded-full"></div></div></div>
+                        <div class="skill-item"><div class="flex justify-between mb-1"><span>VS Code</span><span class="skill-percentage font-semibold text-cyan-700 dark:text-secondary">0%</span></div><div class="progress-bar bg-gray-200 dark:bg-gray-700 rounded-full h-3"><div data-width="95" class="h-3 rounded-full"></div></div></div>
+                        <div class="skill-item"><div class="flex justify-between mb-1"><span>Jupyter</span><span class="skill-percentage font-semibold text-cyan-700 dark:text-secondary">0%</span></div><div class="progress-bar bg-gray-200 dark:bg-gray-700 rounded-full h-3"><div data-width="90" class="h-3 rounded-full"></div></div></div>
+                        <div class="skill-item"><div class="flex justify-between mb-1"><span>Streamlit</span><span class="skill-percentage font-semibold text-cyan-700 dark:text-secondary">0%</span></div><div class="progress-bar bg-gray-200 dark:bg-gray-700 rounded-full h-3"><div data-width="80" class="h-3 rounded-full"></div></div></div>
+                    </div>
+                </div>
+                <div class="dynamic-card bg-white border border-gray-200 shadow-md hover:shadow-lg hover:ring-2 hover:ring-cyan-400/40 p-6 rounded-2xl reveal hover:scale-[1.02] hover:-translate-y-2 transition-all duration-300">
+                    <h3 class="text-2xl font-semibold mb-4 text-cyan-700 dark:text-secondary">AI/ML Concepts</h3>
+                    <div class="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                        <p>Supervised/Unsupervised Learning</p>
+                        <p>Deep Learning (CNN, RNN)</p>
+                        <p>Natural Language Processing</p>
+                        <p>Chatbot & LLM Development</p>
+                        <p>Computer Vision</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="projects" class="py-20 scroll-mt-20 overflow-hidden">
+            <h2 class="text-4xl font-bold text-center mb-12">Projects</h2>
+            
+            <div class="swiper project-slider">
+                <div class="swiper-wrapper">
+                    
+                    <div class="swiper-slide">
+                        <div class="dynamic-card bg-white border border-gray-200 shadow-lg hover:ring-2 hover:ring-cyan-400/40 rounded-2xl w-11/12 max-w-4xl p-10 flex flex-col justify-center text-center min-h-[380px] hover:scale-[1.01] hover:-translate-y-1 transition-all duration-300">
+                            <h3 class="text-3xl font-bold mb-4 text-glow-cyan">NeetiVerse – AI Law Chatbot</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">A multilingual AI legal assistant with voice support for comprehensive legal information.</p>
+                            <a href="https://github.com/MohithVKrishnam/NeetiVerse" target="_blank" class="self-center inline-flex items-center text-cyan-700 dark:text-secondary hover:text-cyan-600 dark:hover:text-primary transition font-semibold link-glow-hover">
+                                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                         <div class="dynamic-card bg-white border border-gray-200 shadow-lg hover:ring-2 hover:ring-cyan-400/40 rounded-2xl w-11/12 max-w-4xl p-10 flex flex-col justify-center text-center min-h-[380px] hover:scale-[1.01] hover:-translate-y-1 transition-all duration-300">
+                            <h3 class="text-3xl font-bold mb-4 text-glow-cyan">NASA APOD Viewer</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">An interactive web app to browse NASA's "Astronomy Picture of the Day" using the official NASA API.</p>
+                            <div class="flex items-center justify-center space-x-8">
+                                <a href="https://mohithvkrishnam.github.io/NASA-APP/" target="_blank" class="inline-flex items-center text-cyan-700 dark:text-secondary hover:text-cyan-600 dark:hover:text-primary transition font-semibold link-glow-hover">
+                                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                    Live Demo
+                                </a>
+                                <a href="https://github.com/MohithVKrishnam/NASA-APP" target="_blank" class="inline-flex items-center text-cyan-700 dark:text-secondary hover:text-cyan-600 dark:hover:text-primary transition font-semibold link-glow-hover">
+                                  <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                  GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="dynamic-card bg-white border border-gray-200 shadow-lg hover:ring-2 hover:ring-cyan-400/40 rounded-2xl w-11/12 max-w-4xl p-10 flex flex-col justify-center text-center min-h-[380px] hover:scale-[1.01] hover:-translate-y-1 transition-all duration-300">
+                            <h3 class="text-3xl font-bold mb-4 text-glow-cyan">Heart Disease Prediction</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">An ML model to predict the likelihood of heart disease based on patient health metrics.</p>
+                            <a href="https://github.com/MohithVKrishnam/Heart_Disease_Prediction_Using_Machine_Learning" target="_blank" class="self-center inline-flex items-center text-cyan-700 dark:text-secondary hover:text-cyan-600 dark:hover:text-primary transition font-semibold link-glow-hover">
+                                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                         <div class="dynamic-card bg-white border border-gray-200 shadow-lg hover:ring-2 hover:ring-cyan-400/40 rounded-2xl w-11/12 max-w-4xl p-10 flex flex-col justify-center text-center min-h-[380px] hover:scale-[1.01] hover:-translate-y-1 transition-all duration-300">
+                            <h3 class="text-3xl font-bold mb-4 text-glow-cyan">PDF Text Summarizer</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">A Streamlit app that uses a Transformer model to generate a concise summary of a PDF file.</p>
+                            <a href="https://github.com/MohithVKrishnam/PDF-Text-Extraction-Using-Transformers-in-Python" target="_blank" class="self-center inline-flex items-center text-cyan-700 dark:text-secondary hover:text-cyan-600 dark:hover:text-primary transition font-semibold link-glow-hover">
+                                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                                View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </section>
+
+        <section id="education" class="py-20 scroll-mt-20">
+             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="reveal">
+                    <h2 class="text-4xl font-bold text-center mb-12">Education</h2>
+                    <div class="dynamic-card bg-white border border-gray-200 shadow-md hover:shadow-lg hover:ring-2 hover:ring-cyan-400/40 p-8 rounded-2xl text-center hover:scale-[1.02] hover:-translate-y-2 transition-all duration-300">
+                        <h3 class="text-2xl font-bold text-cyan-700 dark:text-secondary">BGS College of Engineering and Technology</h3>
+                        <p class="text-lg mt-2">B.E. in Artificial Intelligence & Machine Learning</p>
+                        <p class="text-gray-600 dark:text-gray-400 mt-1">2022 – 2026</p>
+                        <p class="text-3xl font-bold mt-4 gradient-text">8.94 CGPA</p>
+                    </div>
+                </div>
+                <div class="reveal">
+                     <h2 class="text-4xl font-bold text-center mb-12">Certifications</h2>
+                     <div class="dynamic-card bg-white border border-gray-200 shadow-md hover:shadow-lg hover:ring-2 hover:ring-cyan-400/40 p-8 rounded-2xl space-y-4 hover:scale-[1.02] hover:-translate-y-2 transition-all duration-300">
+                        <div class="flex items-start space-x-4">
+                            <span class="text-cyan-700 dark:text-secondary mt-1">&#10003;</span>
+                            <div>
+                                <h4 class="font-semibold">NPTEL: HCI, Cloud Computing</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Verified certification for core concepts.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <span class="text-cyan-700 dark:text-secondary mt-1">&#10003;</span>
+                            <div>
+                                <h4 class="font-semibold">LinkedIn Learning: Generative AI</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Completed course on leveraging GenAI tools.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <span class="text-cyan-700 dark:text-secondary mt-1">&#10003;</span>
+                            <div>
+                                <h4 class="font-semibold">LinkedIn Learning: AI Ethics</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Course on responsible AI development.</p>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+             </div>
+        </section>
+        
+        <section id="contact" class="py-20 scroll-mt-20">
+            <h2 class="text-4xl font-bold text-center mb-12">Get In Touch</h2>
+            <div class="max-w-3xl mx-auto bg-white dark:bg-dark-bg/80 dark:backdrop-blur-sm p-8 rounded-lg shadow-lg dark:shadow-none neon-glow-border reveal">
+                <form action="https://formspree.io/f/xzzvvgle" method="POST">
+                    <div class="relative mb-6">
+                        <input type="text" id="name" name="name" class="peer w-full bg-transparent border-b-2 border-gray-300 dark:border-gray-500 focus:border-cyan-600 dark:focus:border-secondary text-gray-900 dark:text-dark-text p-2 outline-none" placeholder=" " required>
+                        <label for="name" class="absolute left-2 -top-5 text-gray-600 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-cyan-600 dark:peer-focus:text-secondary peer-focus:text-sm">Your Name</label>
+                    </div>
+                    <div class="relative mb-6">
+                        <input type="email" id="email" name="email" class="peer w-full bg-transparent border-b-2 border-gray-300 dark:border-gray-500 focus:border-cyan-600 dark:focus:border-secondary text-gray-900 dark:text-dark-text p-2 outline-none" placeholder=" " required>
+                        <label for="email" class="absolute left-2 -top-5 text-gray-600 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-cyan-600 dark:peer-focus:text-secondary peer-focus:text-sm">Your Email</label>
+                    </div>
+                    <div class="relative mb-8">
+                        <textarea id="message" name="message" rows="4" class="peer w-full bg-transparent border-b-2 border-gray-300 dark:border-gray-500 focus:border-cyan-600 dark:focus:border-secondary text-gray-900 dark:text-dark-text p-2 outline-none" placeholder=" " required></textarea>
+                        <label for="message" class="absolute left-2 -top-5 text-gray-600 dark:text-gray-400 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-cyan-600 dark:peer-focus:text-secondary peer-focus:text-sm">Your Message</label>
+                    </div>
+                    <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-700 dark:bg-gradient-to-r from-secondary to-primary text-white font-bold py-3 px-4 rounded-lg dark:hover:opacity-90 transition-all duration-300 hover:shadow-[0_0_12px_2px_#22d3ee4D] dark:hover:shadow-none">Send Message</button>
+                </form>
+                <div class="text-center mt-6 text-gray-600 dark:text-gray-300">
+                    <p>Or reach me directly at: <a href="mailto:mohithvkrishnam@gmail.com" class="font-semibold text-cyan-700 dark:text-secondary hover:text-cyan-600 dark:hover:text-primary">mohithvkrishnam@gmail.com</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-6 text-gray-500 dark:text-gray-500">
+        <p>&copy; 2025 Mohith V Krishnam. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.4.0/tsparticles.bundle.min.js" defer></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Theme and Particles Logic ---
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const sunIcon = document.getElementById('sunIcon');
+            const moonIcon = document.getElementById('moonIcon');
+            const htmlEl = document.documentElement;
+            let particlesInstance;
+
+            const updateTheme = () => {
+                if (htmlEl.classList.contains('dark')) {
+                    sunIcon.style.display = 'none';
+                    moonIcon.style.display = 'block';
+                    if (!particlesInstance) initParticles(); 
+                } else {
+                    sunIcon.style.display = 'block';
+                    moonIcon.style.display = 'none';
+                    if (particlesInstance) {
+                        particlesInstance.destroy();
+                        particlesInstance = null;
+                    }
+                }
+            };
+
+            const initParticles = () => {
+                if (typeof tsParticles === "undefined") {
+                    console.log("tsParticles not loaded yet, deferring init.");
+                    return; 
+                }
+                tsParticles.load("tsparticles", {
+                    fpsLimit: 60,
+                    particles: {
+                        number: { value: 50, density: { enable: true, value_area: 800 } },
+                        color: { value: ["#00f2fe", "#4facfe", "#2e62ff"] },
+                        shape: { type: "circle" },
+                        opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
+                        size: { value: 3, random: true },
+                        line_linked: { enable: true, distance: 150, color: "#4facfe", opacity: 0.4, width: 1 },
+                        move: { enable: true, speed: 2, direction: "none", random: false, straight: false, out_mode: "out" }
+                    },
+                    interactivity: {
+                        events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } },
+                        modes: { grab: { distance: 140, line_opacity: 1 }, push: { particles_nb: 4 } }
+                    },
+                    retina_detect: true
+                }).then(container => {
+                    particlesInstance = container;
+                });
+            };
+            
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlEl.classList.add('dark');
+            } else {
+                htmlEl.classList.remove('dark');
+            }
+            updateTheme();
+
+            darkModeToggle.addEventListener('click', () => {
+                htmlEl.classList.toggle('dark');
+                localStorage.setItem('theme', htmlEl.classList.contains('dark') ? 'dark' : 'light');
+                updateTheme();
+            });
+
+            // --- Typed.js Initialization ---
+            new Typed('#typewriter', {
+                strings: ["Building AI-powered tools...", "Developing LLM-based systems...", "Crafting impactful backend solutions."],
+                typeSpeed: 50,
+                backSpeed: 25,
+                loop: true,
+            });
+
+            // --- ScrollReveal Initialization ---
+            const sr = ScrollReveal({ distance: '50px', duration: 1500, easing: 'cubic-bezier(0.5, 0, 0, 1)', reset: false });
+            sr.reveal('.reveal', { origin: 'bottom', interval: 150 });
+
+            // --- Animate Skill Bars on Reveal ---
+            function animateValue(obj, start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    obj.innerHTML = Math.floor(progress * (end - start) + start) + '%';
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            const skillItems = document.querySelectorAll('.skill-item');
+            skillItems.forEach(item => {
+                const progressBar = item.querySelector('.progress-bar div');
+                const percentageSpan = item.querySelector('.skill-percentage');
+                const targetWidth = progressBar.getAttribute('data-width');
+                
+                sr.reveal(item, {
+                    delay: 200,
+                    distance: '20px',
+                    origin: 'bottom',
+                    afterReveal: (el) => {
+                        progressBar.style.width = targetWidth + '%';
+                        if(percentageSpan) {
+                           animateValue(percentageSpan, 0, parseInt(targetWidth), 1500);
+                        }
+                    }
+                });
+            });
+
+            // --- Swiper.js Project Slider Initialization ---
+            new Swiper('.project-slider', {
+                effect: "slide",
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                keyboard: {
+                    enabled: true,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+        });
+    </script>
+</body>
+</html>
